@@ -1,22 +1,15 @@
 function account_sharing_detection(connections){
-  const connectedUsersIps = new Map()
-
-  let secondIpConnection = ''
+  const seenUser = new Set()
 
   for (let i=0; i < connections.length-1; i++) {
     const [ip, user] = connections[i]
-    if(connectedUsersIps.has(user)) {
-      const connectedUserIp = connectedUsersIps.get(user)
-
-      if(ip !== connectedUserIp) {
-        secondIpConnection = connectedUserIp
-        break
-      }
+    if(seenUser.has(user)) {
+      return ip
     } else {
-      connectedUsersIps.set(user, ip)
+      seenUser.add(user)
     }
   }
-  return secondIpConnection
+  return ''
 }
 
 const test1 = [
