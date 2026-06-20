@@ -48,15 +48,6 @@ class TopSongs {
   }
 }
 
-const songs = [
-  ["all the single brackets", 132],
-  ["oops! I broke prod again", 274],
-  ["coding in the deep", 146],
-  ["boolean rhapsody", 193],
-  ["here comes the bug", 291],
-  ["all about that base case", 291]
-]
-
 const topSongs = new TopSongs(3)
 
 topSongs.registerPlays("boolean rhapsody", 193)
