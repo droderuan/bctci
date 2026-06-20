@@ -1,6 +1,6 @@
-class Heap {
+export class Heap {
   constructor(list, priorityFunction) {
-    this.heap = list || new Array()
+    this.heap = [...list] || new Array()
     this.priorityFunction = priorityFunction
     this.heapify()
   }
@@ -181,32 +181,32 @@ const numbersList = [10, 2, 1, 80, 32, 9, 2, 8, 13, 24, 50, 5]
 const minHeap = new Heap(numbersList, (a, b) => a < b)
 
 
-console.log("heap before", "[", minHeap.heap.join(", "), "]")
-console.log("top", minHeap.top())
-console.log("heap after", "[", minHeap.heap.join(", "), "]")
-console.log("\n\n")
+// console.log("heap before", "[", minHeap.heap.join(", "), "]")
+// console.log("top", minHeap.top())
+// console.log("heap after", "[", minHeap.heap.join(", "), "]")
+// console.log("\n\n")
 
-console.log("heap before", "[", minHeap.heap.join(", "), "]")
-console.log("pop", minHeap.pop())
-console.log("heap after", "[", minHeap.heap.join(", "), "]")
-console.log("\n\n")
+// console.log("heap before", "[", minHeap.heap.join(", "), "]")
+// console.log("pop", minHeap.pop())
+// console.log("heap after", "[", minHeap.heap.join(", "), "]")
+// console.log("\n\n")
 
-console.log("heap before", "[", minHeap.heap.join(", "), "]")
-console.log("pop", minHeap.pop())
-console.log("heap after", "[", minHeap.heap.join(", "), "]")
-console.log("\n\n")
+// console.log("heap before", "[", minHeap.heap.join(", "), "]")
+// console.log("pop", minHeap.pop())
+// console.log("heap after", "[", minHeap.heap.join(", "), "]")
+// console.log("\n\n")
 
-console.log("heap before", "[", minHeap.heap.join(", "), "]")
-console.log("push", 900)
-minHeap.push(900)
-console.log("heap after", "[", minHeap.heap.join(", "), "]")
-console.log("\n\n")
+// console.log("heap before", "[", minHeap.heap.join(", "), "]")
+// console.log("push", 900)
+// minHeap.push(900)
+// console.log("heap after", "[", minHeap.heap.join(", "), "]")
+// console.log("\n\n")
 
-console.log("heap before", "[", minHeap.heap.join(", "), "]")
-console.log("push", -5)
-minHeap.push(-5)
-console.log("heap after", "[", minHeap.heap.join(", "), "]")
-console.log("\n\n")
+// console.log("heap before", "[", minHeap.heap.join(", "), "]")
+// console.log("push", -5)
+// minHeap.push(-5)
+// console.log("heap after", "[", minHeap.heap.join(", "), "]")
+// console.log("\n\n")
 
 
-minHeap.log()
+// minHeap.log()
