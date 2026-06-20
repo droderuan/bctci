@@ -16,7 +16,7 @@ class Heap {
      */
     const halfHeap = Math.floor(this.size() / 2)
 
-    for (let i=halfHeap; i >= 0; i--) {
+    for (let i = halfHeap; i >= 0; i--) {
       this.bubbleDown(i)
     }
   }
@@ -81,7 +81,7 @@ class Heap {
   }
 
   pop() {
-    if(!this.heap.length) {
+    if (!this.heap.length) {
       return null
     }
     const rootNode = this.getNodeMetadata(0)
@@ -109,7 +109,7 @@ class Heap {
 
       const isLeaf = node.leftChildIdx >= this.size()
 
-      if(isLeaf) {
+      if (isLeaf) {
         break
       }
 
@@ -129,16 +129,54 @@ class Heap {
        * Isso me causou confusão
        */
       if (this.priorityFunction(node.value, childToSwap.value)) {
-          break
+        break
       } else {
         this.swapNodes(node.idx, childToSwap.idx)
         currIdx = childToSwap.idx
       }
     }
   }
+
+  log() {
+    const bfs = new Array()
+    bfs.push([0])
+
+    let nextLevel = 0
+    while (true) {
+      const levelNodes = bfs[nextLevel]
+      const newLevel = new Array()
+
+      for (const node of levelNodes) {
+        const nodeData = this.getNodeMetadata(node)
+        if (nodeData.leftChildIdx > this.size()) {
+          break
+        }
+
+        newLevel.push(nodeData.leftChildIdx)
+        newLevel.push(nodeData.rightChildIdx)
+      }
+
+      if (newLevel.length > 0 || !newLevel.every(curr => curr === undefined)) {
+        bfs.push(newLevel)
+        nextLevel++
+      } else {
+        break
+      }
+    }
+    const lineLength = this.size() * 2 * bfs.length
+
+    for (let i= 0; i < bfs.length; i++) {
+      const levels = bfs[i]
+      const values = levels.map(curr => this.heap[curr])
+      const distanceBetween = (lineLength / (values.length + 1)) - values.length
+      values.unshift("")
+      values.push("")
+      console.log(values.join(" ".repeat(distanceBetween)))
+    }
+  }
 }
 
-const numbersList = [10, 2, 1, 80, 32, 9, 2, 8]
+const numbersList = [10, 2, 1, 80, 32, 9, 2, 8, 13, 24, 50, 5]
 
 const minHeap = new Heap(numbersList, (a, b) => a < b)
 
@@ -169,3 +207,6 @@ console.log("push", -5)
 minHeap.push(-5)
 console.log("heap after", "[", minHeap.heap.join(", "), "]")
 console.log("\n\n")
+
+
+minHeap.log()
