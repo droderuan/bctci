@@ -15,7 +15,7 @@ function adjacency_list_validation(v, graph) {
     const seenNrb = new Set()
     for (const nrb of graph[node]) {
       if (nrb === node) return false
-      if (nrb < 0 || nrb > v) return false
+      if (nrb < 0 || nrb >= v) return false
       if (seenNrb.has(nrb)) return false
       if (!graph[nrb].some(e => e === node)) return false
 
@@ -55,3 +55,27 @@ console.log(adjacency_list_validation(5, graph5))
 const edges6 = [[0, 1]]
 const graph6 = build_adjacency_graph(5, edges6)
 console.log(adjacency_list_validation(5, graph6))
+
+
+// from online material
+console.log("\ntests from book\n")
+
+// Example 1: graph = [[1], [0]]
+// Output: True. This is a simple valid graph with two nodes connected by an edge.
+console.log(adjacency_list_validation(2, [[1], [0]]))
+
+// Example 2: graph = [[2], [0]]
+// Output: False. Node index 2 is invalid since there are only 2 nodes.
+console.log(adjacency_list_validation(2, [[2], [0]]))
+
+// Example 3: graph = [[0], []]
+// Output: False. Self-loop in node 0.
+console.log(adjacency_list_validation(2, [[0], []]))
+
+// Example 4: graph = [[1, 1], [0, 0]]
+// Output: False. Parallel edges between nodes 0 and 1.
+console.log(adjacency_list_validation(2, [[1, 1], [0, 0]]))
+
+// Example 5: graph = [[1], []]
+// Output: False. Node 0 has node 1 as a neighbor but not vice versa.
+console.log(adjacency_list_validation(2, [[1], []]))
