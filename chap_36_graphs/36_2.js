@@ -36,9 +36,56 @@ function graph_path(graph, origin, target) {
 }
 
 const edges = [[0, 1], [4, 5], [1, 4], [1, 2], [1, 5], [2, 5], [2, 4]]
-const graph = build_adjacency_graph(5, edges)
+let graph = build_adjacency_graph(5, edges)
 
 console.log(graph_path(graph, 0, 4))
 console.log(graph_path(graph, 0, 3))
 console.log(graph_path(graph, 4, 0))
 console.log(graph_path(graph, 0, 0))
+
+// from online material
+console.log("\ntests from book\n")
+
+// Example 1:
+graph = [
+  [1],
+  [0, 2, 5, 4],
+  [1, 4, 5],
+  [],
+  [5, 2, 1],
+  [1, 2, 4]
+]
+node1 = 0
+node2 = 4
+console.log(graph_path(graph, node1, node2))
+// Output: [0, 1, 4]
+// There are other valid answers, like [0, 1, 2, 5, 4].
+
+// Example 2:
+graph = [
+  [1],
+  [0, 2, 5, 4],
+  [1, 4, 5],
+  [],
+  [5, 2, 1],
+  [1, 2, 4]
+]
+node1 = 0
+node2 = 3
+console.log(graph_path(graph, node1, node2))
+
+// Output: []
+// There is no path to node 3.
+
+// Example 3:
+graph = [
+  [1],
+  [0, 2],
+  [1]
+]
+node1 = 0
+node2 = 2
+console.log(graph_path(graph, node1, node2))
+
+// Output: [0, 1, 2]
+// A simple path through all nodes.
