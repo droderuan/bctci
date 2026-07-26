@@ -1,3 +1,8 @@
+// a solução do livro chega em tempo linear com uma
+// abordagem interessante, mas não irei colocar aqui.
+// Minha solução complexity o(V^2)
+// Book: https://start.interviewing.io/beyond-ctci/part-vii-catalog/graphs#strongly-connected-graph
+
 function stronglyConnected(graph, visited) {
   function dfs(node, visited) {
     visited.add(node)
